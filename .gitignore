@@ -18,4 +18,6 @@ modules
 .tmp_versions
 Module.symvers
 *.mod.c
+*.lex.c
+*.tab.c
 .cache.mk
