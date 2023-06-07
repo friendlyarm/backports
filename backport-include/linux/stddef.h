@@ -56,4 +56,22 @@
 	__DECLARE_FLEX_ARRAY(TYPE, NAME)
 #endif
 
+#ifndef __struct_group
+#define __struct_group(TAG, NAME, ATTRS, MEMBERS...) \
+	union { \
+		struct { MEMBERS } ATTRS; \
+		struct TAG { MEMBERS } ATTRS NAME; \
+	}
+#endif
+
+#ifndef struct_group
+#define struct_group(NAME, MEMBERS...)  \
+	__struct_group(/* no tag */, NAME, /* no attrs */, MEMBERS)
+#endif
+
+#ifndef struct_group_tagged
+#define struct_group_tagged(TAG, NAME, MEMBERS...) \
+	__struct_group(TAG, NAME, /* no attrs */, MEMBERS)
+#endif
+
 #endif /* __BACKPORT_LINUX_STDDEF_H */

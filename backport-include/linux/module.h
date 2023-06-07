@@ -3,6 +3,11 @@
 #include_next <linux/module.h>
 #include <linux/rcupdate.h>
 
+/* Drop the define from include/linux/cfi.h */
+#ifdef _LINUX_CFI_H
+#undef __CFI_ADDRESSABLE
+#endif
+
 #ifndef __CFI_ADDRESSABLE
 #define __CFI_ADDRESSABLE(fn, __attr)
 #endif
