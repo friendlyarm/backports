@@ -92,6 +92,9 @@ install: modules
 	@$(MAKE) -C $(KLIB_BUILD) M=$(BACKPORT_DIR)			\
 		INSTALL_MOD_DIR=$(KMODDIR) $(KMODPATH_ARG)		\
 		modules_install
+
+.PHONY: local_install
+local_install: install
 	@./scripts/blacklist.sh $(KLIB)/ $(KLIB)/$(KMODDIR)
 	@./scripts/compress_modules.sh $(KLIB)/$(KMODDIR)
 	@./scripts/check_depmod.sh
