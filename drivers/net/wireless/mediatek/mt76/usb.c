@@ -11,7 +11,11 @@
 #define MT_VEND_REQ_MAX_RETRY	10
 #define MT_VEND_REQ_TOUT_MS	300
 
+#if defined(CONFIG_ARCH_ROCKCHIP)
+static bool disable_usb_sg = true;
+#else
 static bool disable_usb_sg;
+#endif
 module_param_named(disable_usb_sg, disable_usb_sg, bool, 0644);
 MODULE_PARM_DESC(disable_usb_sg, "Disable usb scatter-gather support");
 
